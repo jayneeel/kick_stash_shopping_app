@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kick_stash_app/data/product_data.dart';
+import 'package:kick_stash_app/screens/product_details_screen.dart';
+import 'package:kick_stash_app/widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,16 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
           child: Column(
         children: [
-          const Row(
+          Row(
             children: [
               Padding(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Text(
                   "Shoes\nCollection",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
-              Expanded(
+              const Expanded(
                   child: TextField(
                 decoration: InputDecoration(
                     hintText: "Search",
@@ -79,7 +82,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: filters.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-              ))
+              )),
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                final product = products[index];
+                return InkWell(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product,))),
+                  child: ProductCard(
+                    title: product['title'],
+                    price: product['price'],
+                    imageUrl: product['imageUrl'],
+                    backgroundColor: index.isEven ? const Color.fromRGBO(216, 240, 253, 1) : const Color.fromRGBO(245, 247, 249, 1),
+                  ),
+                );
+              },
+              itemCount: products.length,
+              shrinkWrap: true,
+            ),
+          )
         ],
       )),
     );

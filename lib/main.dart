@@ -14,9 +14,23 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "KickStash Shopping App",
       theme: ThemeData(
+        useMaterial3: true,
           fontFamily: "Lato",
+          textTheme: const TextTheme(
+            titleMedium: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            bodySmall: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+          ),
           colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(254, 206, 1, 1)),
           primaryColor: const Color.fromRGBO(254, 206, 1, 1),
+          appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(
+              fontFamily: "Lato",
+              fontSize: 20,
+              color: Colors.black,
+            ),
+            color: Colors.white
+          ),
           inputDecorationTheme: const InputDecorationTheme(
               hintStyle: TextStyle(
             fontWeight: FontWeight.bold,
