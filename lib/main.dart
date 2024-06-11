@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kick_stash_app/screens/home_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,34 +11,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "KickStash Shopping App",
-      theme: ThemeData(
-        useMaterial3: true,
-          fontFamily: "Lato",
-          textTheme: const TextTheme(
-            titleMedium: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            bodySmall: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
-          ),
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(254, 206, 1, 1)),
-          primaryColor: const Color.fromRGBO(254, 206, 1, 1),
-          appBarTheme: const AppBarTheme(
-            titleTextStyle: TextStyle(
-              fontFamily: "Lato",
-              fontSize: 20,
-              color: Colors.black,
+    return Provider(
+      create: (BuildContext context) => 'Hello world',
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "KickStash Shopping App",
+        theme: ThemeData(
+          useMaterial3: true,
+            fontFamily: "Lato",
+            textTheme: const TextTheme(
+              titleMedium: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              bodySmall: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
             ),
-            color: Colors.white
-          ),
-          inputDecorationTheme: const InputDecorationTheme(
-              hintStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-          prefixIconColor: Color.fromRGBO(119, 119, 119, 1))),
-      home: const HomeScreen(),
+            colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(254, 206, 1, 1)),
+            primaryColor: const Color.fromRGBO(254, 206, 1, 1),
+            appBarTheme: const AppBarTheme(
+              titleTextStyle: TextStyle(
+                fontFamily: "Lato",
+                fontSize: 20,
+                color: Colors.black,
+              ),
+              color: Colors.white
+            ),
+            inputDecorationTheme: const InputDecorationTheme(
+                hintStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+            prefixIconColor: Color.fromRGBO(119, 119, 119, 1))),
+        home: const HomeScreen(),
+      ),
     );
   }
 }

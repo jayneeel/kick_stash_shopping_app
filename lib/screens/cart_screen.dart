@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../data/product_data.dart';
 
@@ -9,7 +10,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cart", style: Theme.of(context).textTheme.titleMedium,),
+        title: Text("Cart ${Provider.of<String>(context)}", style: Theme.of(context).textTheme.titleMedium,),
         centerTitle: true,
       ),
       body: ListView.builder(itemBuilder: (context, index){
