@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentPage = 0;
+  int currentScreenIndex = 0;
 
   List<Widget> screens = [
     const ProductsListScreen(),
@@ -20,12 +20,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentPage],
+      body: IndexedStack(
+        index: currentScreenIndex,
+        children: screens,
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentPage,
+        selectedItemColor: Theme.of(context).primaryColor,
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
+        iconSize: 35,
+        currentIndex: currentScreenIndex,
         onTap: (page) {
           setState(() {
-            currentPage = page;
+            currentScreenIndex = page;
           });
         },
         items: const [
