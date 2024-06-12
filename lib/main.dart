@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kick_stash_app/provider/cart_provider.dart';
 import 'package:kick_stash_app/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -11,13 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Provider(
-      create: (BuildContext context) => 'Hello world',
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => CartProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "KickStash Shopping App",
         theme: ThemeData(
-          useMaterial3: true,
+            useMaterial3: true,
             fontFamily: "Lato",
             textTheme: const TextTheme(
               titleMedium: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -27,19 +28,18 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(254, 206, 1, 1)),
             primaryColor: const Color.fromRGBO(254, 206, 1, 1),
             appBarTheme: const AppBarTheme(
-              titleTextStyle: TextStyle(
-                fontFamily: "Lato",
-                fontSize: 20,
-                color: Colors.black,
-              ),
-              color: Colors.white
-            ),
+                titleTextStyle: TextStyle(
+                  fontFamily: "Lato",
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+                color: Colors.white),
             inputDecorationTheme: const InputDecorationTheme(
                 hintStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-            prefixIconColor: Color.fromRGBO(119, 119, 119, 1))),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+                prefixIconColor: Color.fromRGBO(119, 119, 119, 1))),
         home: const HomeScreen(),
       ),
     );
