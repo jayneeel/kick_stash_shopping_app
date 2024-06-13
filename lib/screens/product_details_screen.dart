@@ -46,7 +46,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Image.asset(widget.product['imageUrl']),
+            child: Image.asset(widget.product['imageUrl'], height: 250,),
           ),
           const Spacer(
             flex: 2,

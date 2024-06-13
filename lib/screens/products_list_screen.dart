@@ -28,6 +28,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SafeArea(
         child: Column(
           children: [
@@ -85,7 +86,20 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                   scrollDirection: Axis.horizontal,
                 )),
             Expanded(
-              child: ListView.builder(
+              child: (size.width > 650)?
+                  GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2), itemBuilder: (context, index) {
+                    final product = products[index];
+                    return InkWell(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product,))),
+                      child: ProductCard(
+                        title: product['title'],
+                        price: product['price'],
+                        imageUrl: product['imageUrl'],
+                        backgroundColor: index.isEven ? const Color.fromRGBO(216, 240, 253, 1) : const Color.fromRGBO(245, 247, 249, 1),
+                      ),
+                    );
+                  },itemCount: products.length,)
+                  :ListView.builder(
                 itemBuilder: (context, index) {
                   final product = products[index];
                   return InkWell(
